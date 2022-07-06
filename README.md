@@ -1,28 +1,36 @@
 # m17n-db-bn-national-jatiya
 
-## Bangla Jatiyo Keyboard (National, Bengali: জাতীয়) Keyboard layout developed by Bangladesh Computer Council
+## Bengali input method for National Jatiya layout developed by Bangladesh Computer Council
 
 ## About this layout:
-
-See:
-
-https://en.wikipedia.org/wiki/Bengali_input_methods#Bangla_Jatiyo
 
 Layout taken from
 
 https://github.com/OpenBangla/OpenBangla-Keyboard/blob/master/data/National_Jatiya.json
 
-and ported to m17n-db
+and ported to m17n-db, merging in differences /usr/share/X11/xkb/symbols/bd as far
+as possible, giving priority to National_Jatiya.json in case of a conflict.
+
+One of the conflicts is that National_Jatiya.json has ZWNJ on ` and
+AltGr+` and ZWJ on ~ and AltGr+~ whereas /usr/share/X11/xkb/symbols/bd
+produces the ASCII characters ` and ~ on these keys.
+
+See also:
+
+https://en.wikipedia.org/wiki/Bengali_input_methods#/media/File:KB-Bengali-Jatiyo.svg
+
+The layout picture from Wikipedia shows a few characters on AltGr which do exist
+neither in National_Jatiya.json nor /usr/share/X11/xkb/symbols/bd.
 
 ## Mapping
 
-See the description at the top of the bn-national-jatiya.mim file.
+See the picture from Wikipedia or the contents of the bn-national-jatiya.mim file.
 
 ## Dependencies
 
 You will need to install
 
-* ibus-m17n
+* ibus-typing-booster or ibus-m17n or both.
 * Any Unicode font supporting Bengali https://en.wikipedia.org/wiki/Bengali_alphabet
 
 ## Installation
@@ -33,14 +41,36 @@ $ cp bn-national-jatiya.mim ~/.m17n.d/
 $ ibus restart
 ```
 
-Now ibus should list the newly added input method:
+If ibus-m17n is installed ibus should list the newly added input method:
 
 ``` bash
 $ ibus  list-engine | grep  -i national-jatiya
   m17n:bn:national-jatiya - national-jatiya (m17n)
 ```
 
-## Adding the input method to your desktop:
+(Note: If only ibus-typing-booster but not ibus-m17n is installed, the
+“national-jatiya” input method will not be listed in the output of
+`ibus list-engine`)
+
+
+## Adding ibus-typing-booster and “bn-national-jatiya” to your desktop:
+
+You need to first add ibus-typing-booster to your desktop.
+
+See the chapter “Adding ibus-typing-booster to your desktop”
+in the ibus-typing-booster online documentation:
+
+https://mike-fabian.github.io/ibus-typing-booster/docs/user/
+
+Then you need to open the setup tool of ibus-typing-booster and add
+the “bn-national-jatiya” input method in the tab for “Dictionaries and
+input methods”.  you should be able to add a “bn-national-jatiya”
+Detailed instructions for this are in the chapter “Basic setup for
+your language” in the ibus-typing-booster online documentation:
+
+https://mike-fabian.github.io/ibus-typing-booster/docs/user/
+
+## Adding the ibus-m17n input method to your desktop:
 
 ### If you are  using Gnome3:
 
