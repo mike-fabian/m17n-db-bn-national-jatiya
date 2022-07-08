@@ -36,8 +36,9 @@ You will need to install
 ## Installation
 
 ``` bash
-$ mkdir -p ~/.m17n.d/
+$ mkdir -p ~/.m17n.d/icons/
 $ cp bn-national-jatiya.mim ~/.m17n.d/
+$ cp bn-national-jatiya.png ~/.m17n.d/icons/
 $ ibus restart
 ```
 
