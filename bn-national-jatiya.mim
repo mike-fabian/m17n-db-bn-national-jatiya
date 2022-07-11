@@ -47,7 +47,7 @@ neither in National_Jatiya.json nor /usr/share/X11/xkb/symbols/bd.
 (title "ক")
 
 (map
- (trans
+ (livekey
   ((G-0) "৹") ; U+09F9 BENGALI CURRENCY DENOMINATOR SIXTEEN
   ("0" "০")   ; U+09E6 BENGALI DIGIT ZERO
   ((G-1) "৴") ; U+09F4 BENGALI CURRENCY NUMERATOR ONE
@@ -197,7 +197,6 @@ neither in National_Jatiya.json nor /usr/share/X11/xkb/symbols/bd.
   ((G-f) "ৰ") ; U+09F0 BENGALI LETTER RA WITH MIDDLE DIAGONAL
   ("f" "ব")  ; U+09AC BENGALI LETTER BA
   ((G-g) "॥") ; U+0965 DEVANAGARI DOUBLE DANDA
-  ("g" "্")  ; U+09CD BENGALI SIGN VIRAMA
   ((G-h) "আ") ; U+0986 BENGALI LETTER AA
   ("h" "া")  ; U+09BE BENGALI VOWEL SIGN AA
   ((G-i) "ঽ") ; U+09BD BENGALI SIGN AVAGRAHA
@@ -251,8 +250,31 @@ neither in National_Jatiya.json nor /usr/share/X11/xkb/symbols/bd.
   ((KP_Divide) "/") ; U+002F SOLIDUS
   ((KP_Multiply) "*") ; U+002A ASTERISK
   ((KP_Subtract) "-") ; U+002D HYPHEN-MINUS
+  )
+
+ (deadkey
+  ("g" "্") ; U+09CD BENGALI SIGN VIRAMABENGALI SIGN VIRAMA
+  )
+
+ (independent
+  ("h" (delete @-) "আ") ; + া U+09BE BENGALI VOWEL SIGN AA = আ U+0986 BENGALI LETTER AA
+  ("d" (delete @-) "ই") ; + ি U+09BF BENGALI VOWEL SIGN I = ই U+0987 BENGALI LETTER I
+  ("D" (delete @-) "ঈ") ; + ী U+09C0 BENGALI VOWEL SIGN II = ঈ U+0988 BENGALI LETTER II
+  ("s" (delete @-) "উ") ; + ু U+09C1 BENGALI VOWEL SIGN U = উ U+0989 BENGALI LETTER U
+  ("S" (delete @-) "ঊ") ; + ূ U+09C2 BENGALI VOWEL SIGN UU = ঊ U+098A BENGALI LETTER UU
+  ("a" (delete @-) "ঋ") ; + ৃ U+09C3 BENGALI VOWEL SIGN VOCALIC R = ঋ U+098B BENGALI LETTER VOCALIC R
+  ("c" (delete @-) "এ") ; + ে U+09C7 BENGALI VOWEL SIGN E = এ U+098F BENGALI LETTER E
+  ("C" (delete @-) "ঐ") ; + ৈ U+09C8 BENGALI VOWEL SIGN AI = ঐ U+0990 BENGALI LETTER AI
+  ("x" (delete @-) "ও") ; + ো U+09CB BENGALI VOWEL SIGN O = ও U+0993 BENGALI LETTER O
+  ("X" (delete @-) "ঔ") ; + ৌ U+09CC BENGALI VOWEL SIGN AU = ঔ U+0994 BENGALI LETTER AU
+  ("G" (delete @-) "॥") ; + । U+0964 DEVANAGARI DANDA = ॥ U+0965 DEVANAGARI DOUBLE DANDA
   ))
 
 (state
  (init
-    (trans)))
+  (livekey)
+  (deadkey (shift virama)))
+
+ (virama
+  (independent (shift init))
+  (nil (shift init))))
