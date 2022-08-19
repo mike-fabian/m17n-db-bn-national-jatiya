@@ -62,6 +62,13 @@ http://unicode.org/charts/nameslist/n_0980.html
 
 (title "ক")
 
+(variable
+ (use-automatic-vowel-forming
+  (_"If this variable is 1 (the default), automatic vowel forming is used.
+For example, a dependent vowel like া is automatically converted to
+the independent form আ if it is not typed after a consonant.")
+  1 0 1)) ; ((NAME [DESCRIPTION DEFAULT-VALUE VALID-VALUE ...])
+
 (map
  (independent-vowels
   ("H" "অ")  ; U+0985 BENGALI LETTER A
@@ -358,10 +365,9 @@ http://unicode.org/charts/nameslist/n_0980.html
 
 (state
  (init
-  ;; Initialize variable:
-  ;; (t (set consonant-flag 1)) ; Switch off automatic vowel forming
-  (t (set consonant-flag 0)) ; Switch on automatic vowel forming
-
+  (t (cond
+      ((= use-automatic-vowel-forming 1) (set consonant-flag 0))
+      (1 (set consonant-flag 1))))
   (independent-vowels)
   (additional-independent-vowels-for-sanskrit)
   (dependent-vowel-signs)
