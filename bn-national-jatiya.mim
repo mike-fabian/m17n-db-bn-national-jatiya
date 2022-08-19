@@ -150,9 +150,12 @@ http://unicode.org/charts/nameslist/n_0980.html
   ("i" "হ") ; U+09B9 BENGALI LETTER HA
   )
 
- (additional-consonants
+ (additional-consonant
   ;; a dead consonant form of ta, without implicit vowel, used in some sequences:
   ((G-^) "ৎ") ; U+09CE BENGALI LETTER KHANDA TA
+  )
+
+ (additional-consonants
   ;; These three consonants with nuktas are listed in
   ;; CompositionExclusions.txt. That means that they do not recompose
   ;; during normalization. The NFC form is the same as the decomposed
@@ -364,7 +367,8 @@ http://unicode.org/charts/nameslist/n_0980.html
   (dependent-vowel-signs)
   (additional-dependent-vowel-signs-for-sanskrit)
   (consonants (set consonant-flag 1) (shift after-consonant))
-  (additional-consonants)
+  (additional-consonant)
+  (additional-consonants (set consonant-flag 1) (shift after-consonant))
   (various-signs)
   (additions-for-assamese)
   (currency-symbols)
